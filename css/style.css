@@ -1,0 +1,64 @@
+body {
+    height: 615px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    width: 35%;
+    min-width: 255px;
+    margin-top: 70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contents {
+    width: 80%;
+}
+
+.your-image {
+    height: 200px;
+    background-color: #eeffff;
+    margin: 0 auto;
+    border: dashed 1px #00ffff;
+    border-radius: 10px;
+    color: #c0c0c0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.your-image-contents {
+    width: 60%;
+}
+
+.upload {
+    font-size: 20px;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.submit {
+    width: 50%;
+    cursor: pointer;
+    background-color: #0099ff;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    height: 35px;
+}
+
+.or {
+    color: #c0c0c0;
+}
+
+.file-input {
+    display: none;
+}

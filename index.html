@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Devchallenges</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+  </head>
+  <body>
+    <div class="main">
+      <div class="contents">
+        <p class="upload">Upload your image</p>
+        <p>File should be Jpeg,Png</p>
+        <div class="your-image">
+          <div class="your-image-contents">
+            <img src="img/image.svg">
+            <p>Drag & Drop your image here</p>
+          </div>
+        </div>
+        <p class="or">Or</p>
+        <form enctype="multipart/form-data">
+          <!-- <input class="input-files" type="file" name="up_file"> -->
+          <label for="submit_button" class="submit">Choose a file</label>
+          <input type="file" id="submit_button" name="up_file" class="file-input">
+        </form>   
+      </div>
+      <div id="insert-img"></div>
+    </div>
+    <script type="text/javascript" src="js/dom.js"></script>
+  </body>
+</html>
