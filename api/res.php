@@ -1,10 +1,11 @@
 <?php
 header("Content-Type: application/json; charset=utf-8");
-if(is_uploaded_file($_FILES['up_file']['tmp_name'])) {
-    $img_name = $_FILES['up_file']['name'];
-    if(move_uploaded_file($_FILES['up_file']['tmp_name'],"./".$img_name)){
-        // echo "<img src='" . $img_name . "'>";
-        // header("Location:index.html");
+$path = __DIR__ . 'uploaded-file';
+$data = json_decode(file_get_contents('php://input'), true);
+
+if(is_uploaded_file($FILES['tmp_name'])) {
+    $img_name = $FILES['tmp_name']['name'];
+    if(move_uploaded_file($FILES['tmp_name']['name'],$path. "/" . $img_name)){
         $json = $img_name;
         echo json_encode($json);
     } else {
