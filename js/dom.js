@@ -1,17 +1,14 @@
-const file = document.getElementById("submit_button");
-file.addEventListener('change', function(e) {
+document.getElementById('submit_button').addEventListener('change', function(e) {
     const requestURL = './api/res.php';
-    let img_name = e.target.files[0]['name'];
+    let imgName = e.target.files[0]['name'];
     let fileReader = new FileReader();
     fileReader.readAsDataURL(e.target.files[0]);
     fileReader.addEventListener('load', function(e) {
         let img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
         let data = {
             'image': img,
-            'img_name': img_name
+            'img_name': imgName
         }
-
-        console.log(data);
 
         fetch(requestURL, {
             method: 'POST',
@@ -21,12 +18,10 @@ file.addEventListener('change', function(e) {
             }
         })
         .then (response => {
-            console.log('ok');
             return response.json();
         })
         .then (json => {
-            console.log('success')
-            console.log(json);
+            
         })
         .catch (e => {
             alert("エラー");

@@ -9,5 +9,5 @@ if($data) {
     file_put_contents($file_path, $image);  
     echo json_encode($data);
 } else {
-    echo 'file not uploaded.';
+    echo json_encode('file not uploaded.');
 }
