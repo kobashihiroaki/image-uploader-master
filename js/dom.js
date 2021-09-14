@@ -1,4 +1,5 @@
 function uploadImage(json) {
+    document.getElementById('uploading').style.display = 'none';
     document.getElementById('uploaded-contents').style.display = 'flex';
     document.getElementById('uploaded-image').setAttribute('src', 'api/uploaded_file/' + json.img_name);
     document.getElementById('copy-link-text').setAttribute('value', 'localhost/image-uploader-master/api/uploaded_file/' + json.img_name);
@@ -16,6 +17,7 @@ fileArea.addEventListener('dragleave', function(e) {
 fileArea.addEventListener('drop', function(e) {
     e.preventDefault();
     document.getElementById('main').style.display = 'none';
+    document.getElementById('uploading').style.display = 'flex';
     const requestURL = './api/res.php';
     let imgName = e.dataTransfer.files[0].name;
     const fileReader = new FileReader();
@@ -38,7 +40,9 @@ fileArea.addEventListener('drop', function(e) {
             return response.json();
         })
         .then (json => {
-            uploadImage(json);
+            setTimeout(() => {
+                uploadImage(json);
+            }, 3000);
         })
         .catch (e => {
             alert("エラー");
@@ -48,6 +52,7 @@ fileArea.addEventListener('drop', function(e) {
 
 document.getElementById('submit_button').addEventListener('change', function(e) {
     document.getElementById('main').style.display = 'none';
+    document.getElementById('uploading').style.display = 'flex';
     const requestURL = './api/res.php';
     let imgName = e.target.files[0]['name'];
     let fileReader = new FileReader();
@@ -70,7 +75,9 @@ document.getElementById('submit_button').addEventListener('change', function(e) 
             return response.json();
         })
         .then (json => {
-            uploadImage(json);
+            setTimeout(() => {
+                uploadImage(json);
+            }, 3000);
         })
         .catch (e => {
             alert("エラー");
