@@ -1,23 +1,35 @@
-const submit_button = document.getElementById("submit_button");
-submit_button.addEventListener('input', () => {
-    const requestUrl = '../api/res.php';
-    const uploadFile = document.getElementById('submit_button').files[0]['name'];
-    console.log(uploadFile);
-    fetch(requestUrl, {
-        method: 'POST',
-        body: JSON.stringify(uploadFile),
-        headers: {
-            'Content-Type': 'application/json'
+const file = document.getElementById("submit_button");
+file.addEventListener('change', function(e) {
+    const requestURL = './api/res.php';
+    let img_name = e.target.files[0]['name'];
+    let fileReader = new FileReader();
+    fileReader.readAsDataURL(e.target.files[0]);
+    fileReader.addEventListener('load', function(e) {
+        let img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
+        let data = {
+            'image': img,
+            'img_name': img_name
         }
-    })
-    .then (response => {
-        console.log('ok');
-        return response.json();
-    })
-    .then (json => {
-        console.log(json);
-    })
-    .catch (e => {
-        alert("エラー");
-    })
+
+        console.log(data);
+
+        fetch(requestURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then (response => {
+            console.log('ok');
+            return response.json();
+        })
+        .then (json => {
+            console.log('success')
+            console.log(json);
+        })
+        .catch (e => {
+            alert("エラー");
+        })
+    });
 });
