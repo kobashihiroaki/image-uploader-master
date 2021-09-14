@@ -22,7 +22,7 @@ body {
     width: 80%;
 }
 
-.your-image {
+.your_image {
     height: 200px;
     background-color: #eeffff;
     margin: 0 auto;
@@ -35,7 +35,7 @@ body {
     align-items: center;
 }
 
-.your-image-contents {
+.your_image_contents {
     width: 60%;
 }
 
@@ -59,6 +59,12 @@ body {
     color: #c0c0c0;
 }
 
-.file-input {
+.file_input {
     display: none;
+}
+
+.uploaded_contents {
+    display: none;
+    width: 35%;
+    min-width: 255px;
 }

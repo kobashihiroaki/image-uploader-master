@@ -1,4 +1,5 @@
 document.getElementById('submit_button').addEventListener('change', function(e) {
+    document.getElementById('main').style.display = 'none';
     const requestURL = './api/res.php';
     let imgName = e.target.files[0]['name'];
     let fileReader = new FileReader();
@@ -27,4 +28,5 @@ document.getElementById('submit_button').addEventListener('change', function(e) 
             alert("エラー");
         })
     });
+    document.getElementById('uploaded-contents').style.display = 'block';
 });
