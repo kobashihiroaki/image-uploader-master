@@ -5,6 +5,10 @@
     <title>Devchallenges</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="main" class="main">
@@ -30,16 +34,17 @@
     <div id="uploading" class="uploading">
       <div class="uploading_contents">
         <p>Uploading...</p>
-        <div>---</div>
+        <i class="fas fa-spinner spinner"></i>
       </div>
     </div>
     
     <div id="uploaded-contents" class="uploaded_contents">
       <div class="img_contents">
+        <i class="far fa-check-circle check"></i>
         <p class="success">Uploaded Successfully!</p>
-        <img id="uploaded-image" src="">
+        <img id="uploaded-image" class="uploaded_image">
         <div class="link">
-          <input id="copy-link-text" class="copy_link_text" type="text" value="">
+          <input id="copy-link-text" class="copy_link_text" type="text">
           <input id="copy-link-button" class="copy_link_button" type="button" value="Copy Link">
         </div>
       </div>
