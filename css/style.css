@@ -35,6 +35,14 @@ body {
     align-items: center;
 }
 
+.your_image_contents {
+    width: 60%;
+}
+
+.your_image_contents > p {
+    font-size: 15px;
+}
+
 .uploading {
     box-shadow: 0px 0px 2px;
     width: 35%;
@@ -44,7 +52,21 @@ body {
 }
 
 .uploading_contents {
-    width:90%;
+    width: 90%;
+    text-align: center;
+}
+
+.uploading_contents > p {
+    font-family: 'Karantina';
+    font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.spinner {
+    font-size: 50px;
+    border: none;
+    margin-bottom: 20px;
 }
 
 .uploaded_contents {
@@ -58,14 +80,16 @@ body {
     justify-content: center;
 }
 
-.your_image_contents {
-    width: 60%;
+.img_contents {
+    width: 90%;
+    text-align: center;
 }
 
 .upload {
-    font-size: 20px;
+    font-size: 40px;
     margin-top: 0;
-    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Karantina';
 }
 
 .submit {
@@ -89,14 +113,22 @@ body {
 }
 
 .success {
-    font-size: 15px;
-    font-weight: bold;
+    font-family: 'Karantina';
+    font-size: 40px;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.img_contents {
-    width: 90%;
-    align-items: center;
+.uploaded_image {
+    border-radius: 25px;
+}
+
+.check {
+    font-size: 50px;
+    margin: 0 auto;
+    background-color: #00ff00;
+    border-radius: 30px;
 }
 
 .img_contents > img {
@@ -109,10 +141,11 @@ body {
 
 .copy_link_text {
     width: 70%;
-    background-color: #eeffff;
+    background-color: #ccffff;
     border: solid 1px;
     border-radius: 8px;
     height: 30px;
+    border: none;
 }
 
 .copy_link_button {
