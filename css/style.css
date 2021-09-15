@@ -52,7 +52,7 @@ body {
 }
 
 .uploading_contents {
-    width:90%;
+    width: 90%;
     text-align: center;
 }
 
@@ -125,7 +125,7 @@ body {
 }
 
 .check {
-    font-size: 3em;
+    font-size: 50px;
     margin: 0 auto;
     background-color: #00ff00;
     border-radius: 30px;
