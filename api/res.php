@@ -8,7 +8,10 @@ if($data) {
     if ($ext === 'jpg' || $ext === 'jpeg' || $ext === 'png') {
         $image= base64_decode($data['image']);
         $file_path = $path . $data['img_name'];
-        file_put_contents($file_path, $image);  
+        file_put_contents($file_path, $image);
+        $file = glob($path . '*');
+        $file_name = basename($file[0]);
+        rename($path.$file_name, $file_path);
         echo json_encode($data);
     } else {
         echo json_encode('This extension is not supported.');

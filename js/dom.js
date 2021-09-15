@@ -16,8 +16,6 @@ fileArea.addEventListener('dragleave', function(e) {
 
 fileArea.addEventListener('drop', function(e) {
     e.preventDefault();
-    document.getElementById('main').style.display = 'none';
-    document.getElementById('uploading').style.display = 'flex';
     const requestURL = './api/res.php';
     let imgName = e.dataTransfer.files[0].name;
     const fileReader = new FileReader();
@@ -42,9 +40,10 @@ fileArea.addEventListener('drop', function(e) {
         .then (json => {
             if (typeof(json) == 'string') {
                 alert(json);
-                document.getElementById('main').style.display = 'flex';
-                document.getElementById('uploading').style.display = 'none';
             } else {
+                console.log(json);
+                document.getElementById('main').style.display = 'none';
+                document.getElementById('uploading').style.display = 'flex';
                 setTimeout(() => {
                     uploadImage(json);
                 }, 3000);
@@ -57,8 +56,6 @@ fileArea.addEventListener('drop', function(e) {
 });
 
 document.getElementById('submit_button').addEventListener('change', function(e) {
-    document.getElementById('main').style.display = 'none';
-    document.getElementById('uploading').style.display = 'flex';
     const requestURL = './api/res.php';
     let imgName = e.target.files[0]['name'];
     let fileReader = new FileReader();
@@ -83,9 +80,9 @@ document.getElementById('submit_button').addEventListener('change', function(e) 
         .then (json => {
             if (typeof(json) == 'string') {
                 alert(json);
-                document.getElementById('main').style.display = 'flex';
-                document.getElementById('uploading').style.display = 'none';
             } else {
+                document.getElementById('main').style.display = 'none';
+                document.getElementById('uploading').style.display = 'flex';
                 setTimeout(() => {
                     uploadImage(json);
                 }, 3000);
