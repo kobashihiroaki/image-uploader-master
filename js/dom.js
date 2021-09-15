@@ -40,9 +40,15 @@ fileArea.addEventListener('drop', function(e) {
             return response.json();
         })
         .then (json => {
-            setTimeout(() => {
-                uploadImage(json);
-            }, 3000);
+            if (typeof(json) == 'string') {
+                alert(json);
+                document.getElementById('main').style.display = 'flex';
+                document.getElementById('uploading').style.display = 'none';
+            } else {
+                setTimeout(() => {
+                    uploadImage(json);
+                }, 3000);
+            }
         })
         .catch (e => {
             alert("エラー");
@@ -75,9 +81,15 @@ document.getElementById('submit_button').addEventListener('change', function(e) 
             return response.json();
         })
         .then (json => {
-            setTimeout(() => {
-                uploadImage(json);
-            }, 3000);
+            if (typeof(json) == 'string') {
+                alert(json);
+                document.getElementById('main').style.display = 'flex';
+                document.getElementById('uploading').style.display = 'none';
+            } else {
+                setTimeout(() => {
+                    uploadImage(json);
+                }, 3000);
+            }
         })
         .catch (e => {
             alert("エラー");

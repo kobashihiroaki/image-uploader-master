@@ -39,6 +39,10 @@ body {
     width: 60%;
 }
 
+.your_image_contents > p {
+    font-size: 15px;
+}
+
 .uploading {
     box-shadow: 0px 0px 2px;
     width: 35%;
@@ -137,7 +141,7 @@ body {
 
 .copy_link_text {
     width: 70%;
-    background-color: #eeffff;
+    background-color: #ccffff;
     border: solid 1px;
     border-radius: 8px;
     height: 30px;
