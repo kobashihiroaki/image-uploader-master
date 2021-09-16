@@ -1,11 +1,11 @@
 function uploadImage(json) {
     document.getElementById('uploading').style.display = 'none';
-    document.getElementById('uploaded-contents').style.display = 'flex';
-    document.getElementById('uploaded-image').setAttribute('src', 'api/uploaded_file/' + json.img_name);
-    document.getElementById('copy-link-text').setAttribute('value', 'localhost/image-uploader-master/api/uploaded_file/' + json.img_name);
+    document.getElementById('uploaded_contents').style.display = 'flex';
+    document.getElementById('uploaded_image').setAttribute('src', 'api/uploaded_file/' + json.img_name);
+    document.getElementById('copy_link_text').setAttribute('value', 'localhost/image-uploader-master/api/uploaded_file/' + json.img_name);
 }
 
-const fileArea = document.getElementById('drop-area');
+const fileArea = document.getElementById('drop_area');
 fileArea.addEventListener('dragover', function(e) {
     e.preventDefault();
 });
@@ -18,84 +18,86 @@ fileArea.addEventListener('drop', function(e) {
     e.preventDefault();
     const requestURL = './api/res.php';
     let imgName = e.dataTransfer.files[0].name;
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(e.dataTransfer.files[0]);
-    fileReader.addEventListener('load', function(e) {
-        const img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
-        const data = {
-            'image': img,
-            'img_name': imgName
-        }
-
-        fetch(requestURL, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
+    const fileType = imgName.split('.').pop();
+    if (fileType == 'jpg' || fileType == 'jpeg' || fileType == 'png') {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(e.dataTransfer.files[0]);
+        fileReader.addEventListener('load', function(e) {
+            const img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
+            const data = {
+                'image': img,
+                'img_name': imgName
             }
-        })
-        .then (response => {
-            return response.json();
-        })
-        .then (json => {
-            if (typeof(json) == 'string') {
-                alert(json);
-            } else {
-                console.log(json);
+
+            fetch(requestURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then (response => {
+                return response.json();
+            })
+            .then (json => {
                 document.getElementById('main').style.display = 'none';
                 document.getElementById('uploading').style.display = 'flex';
                 setTimeout(() => {
                     uploadImage(json);
                 }, 3000);
-            }
-        })
-        .catch (e => {
-            alert("エラー");
-        })
-    });
+            })
+            .catch (e => {
+                alert("エラー");
+            })
+        });
+    } else {
+        alert('拡張子見ろよ。');
+    }
 });
 
 document.getElementById('submit_button').addEventListener('change', function(e) {
     const requestURL = './api/res.php';
-    let imgName = e.target.files[0]['name'];
-    let fileReader = new FileReader();
-    fileReader.readAsDataURL(e.target.files[0]);
-    fileReader.addEventListener('load', function(e) {
-        let img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
-        let data = {
-            'image': img,
-            'img_name': imgName
-        }
-
-        fetch(requestURL, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
+    const imgName = e.target.files[0]['name'];
+    const fileType = imgName.split('.').pop();
+    if (fileType == 'jpg' || fileType == 'jpeg' || fileType == 'png') {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(e.target.files[0]);
+        fileReader.addEventListener('load', function(e) {
+            const img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
+            const data = {
+                'image': img,
+                'img_name': imgName
             }
-        })
-        .then (response => {
-            return response.json();
-        })
-        .then (json => {
-            if (typeof(json) == 'string') {
-                alert(json);
-            } else {
+
+            fetch(requestURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then (response => {
+                return response.json();
+            })
+            .then (json => {
                 document.getElementById('main').style.display = 'none';
                 document.getElementById('uploading').style.display = 'flex';
                 setTimeout(() => {
                     uploadImage(json);
                 }, 3000);
-            }
-        })
-        .catch (e => {
-            alert("エラー");
-        })
-    });
+                
+            })
+            .catch (e => {
+                alert("エラー");
+            })
+        });
+    } else {
+        alert('拡張子見ろよ。');
+    }
 });
 
-document.getElementById('copy-link-button').addEventListener('click', function() {
-    let copyTarget = document.getElementById('copy-link-text');
+document.getElementById('copy_link_button').addEventListener('click', function() {
+    const copyTarget = document.getElementById('copy_link_text');
     copyTarget.select();
     if(navigator.clipboard == undefined) {
         window.clipboardData.setData('Text', copyTarget.getAttribute('value'));

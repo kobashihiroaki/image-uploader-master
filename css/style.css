@@ -22,7 +22,7 @@ body {
     width: 80%;
 }
 
-.drop_area {
+.drop-area {
     height: 200px;
     background-color: #eeffff;
     margin: 0 auto;
@@ -35,11 +35,11 @@ body {
     align-items: center;
 }
 
-.your_image_contents {
+.your-image-contents {
     width: 60%;
 }
 
-.your_image_contents > p {
+.your-image-contents > p {
     font-size: 15px;
 }
 
@@ -51,12 +51,12 @@ body {
     justify-content: center;
 }
 
-.uploading_contents {
+.uploading-contents {
     width: 90%;
     text-align: center;
 }
 
-.uploading_contents > p {
+.uploading-contents > p {
     font-family: 'Karantina';
     font-size: 50px;
     margin-top: 20px;
@@ -69,7 +69,7 @@ body {
     margin-bottom: 20px;
 }
 
-.uploaded_contents {
+.uploaded-contents {
     padding-top: 20px;
     padding-bottom: 20px;
     width: 28%;
@@ -80,7 +80,7 @@ body {
     justify-content: center;
 }
 
-.img_contents {
+.img-contents {
     width: 90%;
     text-align: center;
 }
@@ -108,7 +108,7 @@ body {
     color: #c0c0c0;
 }
 
-.file_input {
+.file-input {
     display: none;
 }
 
@@ -120,7 +120,7 @@ body {
     margin-bottom: 10px;
 }
 
-.uploaded_image {
+.uploaded-image {
     border-radius: 25px;
 }
 
@@ -131,7 +131,7 @@ body {
     border-radius: 30px;
 }
 
-.img_contents > img {
+.img-contents > img {
     width: 100%;
 }
 
@@ -139,7 +139,7 @@ body {
     width: 100%;
 }
 
-.copy_link_text {
+.copy-link-text {
     width: 70%;
     background-color: #ccffff;
     border: solid 1px;
@@ -148,10 +148,10 @@ body {
     border: none;
 }
 
-.copy_link_button {
+.copy-link-button {
     width: 25%;
     background-color: #0099ff;
-    color: #ffff;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     height: 35px;

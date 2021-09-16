@@ -12,8 +12,10 @@ if($data) {
         file_put_contents($file_path, $image);
         echo json_encode($data);
     } else {
-        echo json_encode('This extension is not supported.');
+        http_response_code(400);
+        echo('This extension is not supported.');
     }
 } else {
-    echo json_encode('File not uploaded.');
+    http_response_code(400);
+    echo('File not uploaded.');
 }
