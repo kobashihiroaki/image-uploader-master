@@ -16,39 +16,39 @@ fileArea.addEventListener('dragleave', function(e) {
 
 fileArea.addEventListener('drop', function(e) {
     e.preventDefault();
-    const requestURL = './api/res.php';
     let imgName = e.dataTransfer.files[0].name;
     const fileType = imgName.split('.').pop();
     if (fileType == 'jpg' || fileType == 'jpeg' || fileType == 'png') {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(e.dataTransfer.files[0]);
-        fileReader.addEventListener('load', function(e) {
+        fileReader.addEventListener('load', async() => {
             const img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
             const data = {
                 'image': img,
                 'img_name': imgName
             }
-
-            fetch(requestURL, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
+            const requestURL = './api/res.php';
+            try {
+                const response = await fetch(requestURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    const resJSON = await response.json();
+                    document.getElementById('main').style.display = 'none';
+                    document.getElementById('uploading').style.display = 'flex';
+                    setTimeout(() => {
+                        uploadImage(resJSON);
+                    }, 3000);
+                } else {
+                    throw new Error('Network response was not ok.');
                 }
-            })
-            .then (response => {
-                return response.json();
-            })
-            .then (json => {
-                document.getElementById('main').style.display = 'none';
-                document.getElementById('uploading').style.display = 'flex';
-                setTimeout(() => {
-                    uploadImage(json);
-                }, 3000);
-            })
-            .catch (e => {
+            } catch (error) {
                 alert("エラー");
-            })
+            }
         });
     } else {
         alert('拡張子見ろよ。');
@@ -56,40 +56,39 @@ fileArea.addEventListener('drop', function(e) {
 });
 
 document.getElementById('submit_button').addEventListener('change', function(e) {
-    const requestURL = './api/res.php';
     const imgName = e.target.files[0]['name'];
     const fileType = imgName.split('.').pop();
     if (fileType == 'jpg' || fileType == 'jpeg' || fileType == 'png') {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(e.target.files[0]);
-        fileReader.addEventListener('load', function(e) {
+        fileReader.addEventListener('load', async() => {
             const img = fileReader.result.replace(/data:.*\/.*;base64,/, '');
             const data = {
                 'image': img,
                 'img_name': imgName
             }
-
-            fetch(requestURL, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
+            const requestURL = './api/res.php';
+            try {
+                const response = await fetch(requestURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    const resJSON = await response.json();
+                    document.getElementById('main').style.display = 'none';
+                    document.getElementById('uploading').style.display = 'flex';
+                    setTimeout(() => {
+                        uploadImage(resJSON);
+                    }, 3000);
+                } else {
+                    throw new Error('Network response was not ok.');
                 }
-            })
-            .then (response => {
-                return response.json();
-            })
-            .then (json => {
-                document.getElementById('main').style.display = 'none';
-                document.getElementById('uploading').style.display = 'flex';
-                setTimeout(() => {
-                    uploadImage(json);
-                }, 3000);
-                
-            })
-            .catch (e => {
+            } catch (error) {
                 alert("エラー");
-            })
+            }
         });
     } else {
         alert('拡張子見ろよ。');
