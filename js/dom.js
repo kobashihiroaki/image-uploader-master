@@ -14,7 +14,7 @@ fileArea.addEventListener('dragleave', function(e) {
     e.preventDefault();
 });
 
-fileArea.addEventListener('drop', function(e) {
+fileArea.addEventListener('drop', (e) => {
     e.preventDefault();
     let imgName = e.dataTransfer.files[0].name;
     const fileType = imgName.split('.').pop();
@@ -55,7 +55,7 @@ fileArea.addEventListener('drop', function(e) {
     }
 });
 
-document.getElementById('submit_button').addEventListener('change', function(e) {
+document.getElementById('submit_button').addEventListener('change', (e) => {
     const imgName = e.target.files[0]['name'];
     const fileType = imgName.split('.').pop();
     if (fileType == 'jpg' || fileType == 'jpeg' || fileType == 'png') {
@@ -95,7 +95,7 @@ document.getElementById('submit_button').addEventListener('change', function(e) 
     }
 });
 
-document.getElementById('copy_link_button').addEventListener('click', function() {
+document.getElementById('copy_link_button').addEventListener('click', () => {
     const copyTarget = document.getElementById('copy_link_text');
     copyTarget.select();
     if(navigator.clipboard == undefined) {
