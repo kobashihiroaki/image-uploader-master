@@ -1,15 +1,21 @@
 <?php
 header("Content-Type: application/json; charset=utf-8");
-if(is_uploaded_file($_FILES['up_file']['tmp_name'])) {
-    $img_name = $_FILES['up_file']['name'];
-    if(move_uploaded_file($_FILES['up_file']['tmp_name'],"./".$img_name)){
-        // echo "<img src='" . $img_name . "'>";
-        // header("Location:index.html");
-        $json = $img_name;
-        echo json_encode($json);
+$path = __DIR__ . '\\uploaded_file\\';
+$data = json_decode(file_get_contents('php://input'), true);
+
+if($data) {
+    $ext = pathinfo($data['img_name'], PATHINFO_EXTENSION);
+    if ($ext === 'jpg' || $ext === 'jpeg' || $ext === 'png') {
+        $image= base64_decode($data['image']);
+        $img_name = mb_convert_encoding($data['img_name'], 'sjis');
+        $file_path = $path . $img_name;
+        file_put_contents($file_path, $image);
+        echo json_encode($data);
     } else {
-        echo "error while saving.";
+        http_response_code(400);
+        echo('This extension is not supported.');
     }
 } else {
-    echo "file not uploaded.";
+    http_response_code(400);
+    echo('File not uploaded.');
 }
